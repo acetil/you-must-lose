@@ -250,8 +250,11 @@ script = ExtResource( 1 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 374.438, 124.174 )
 scale = Vector2( 1.35479, 1.35728 )
+relativeMovementForce = 400.0
 jumpImpulseNorm = Vector2( 0, 500 )
 maxJumps = 3
+horizontalFriction = 8.0
+minXVel = 10.0
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 0.520001, 0.520001 )
