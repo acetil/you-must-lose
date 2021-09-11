@@ -1,11 +1,11 @@
 [gd_scene load_steps=32 format=2]
 
-[ext_resource path="res://src/Level.cs" type="Script" id=1]
+[ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tilesheet_complete_2X.png" type="Texture" id=3]
-[ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Level.cs" type="Script" id=4]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/levels/Level2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/TestLevel.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -248,38 +248,26 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 1/z_index = 0
 
 [node name="World" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 nextLevel = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 105.047, 428.361 )
+position = Vector2( 196.649, 487.689 )
 scale = Vector2( 1.35479, 1.35728 )
 
 [node name="TileMap" type="TileMap" parent="."]
-scale = Vector2( 0.520001, 0.520001 )
+scale = Vector2( 0.25, 0.25 )
 tile_set = SubResource( 25 )
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 524289, 0, 0, 917506, 1, 0, 917508, 1, 1, 917510, 1, 1, 917512, 1, 1, 917514, 1, 1, 917516, 1, 2, 917523, 1, 0, 917525, 1, 1, 917527, 1, 1, 917529, 1, 1, 917531, 1, 1, 917533, 1, 2 )
+tile_data = PoolIntArray( 327686, 1, 3, 327688, 1, 3, 327690, 1, 3, 327692, 1, 3, 327694, 1, 3, 327696, 1, 3, 327698, 1, 3, 327700, 1, 3, 327702, 1, 3, 327704, 1, 3, 327706, 1, 3, 327708, 1, 3, 327710, 1, 3, 327712, 1, 3, 327714, 1, 3, 327716, 1, 3, 327718, 1, 3, 327720, 1, 3, 327722, 1, 3, 327724, 1, 3, 327726, 1, 3, 327728, 1, 3, 327730, 1, 3, 327732, 1, 3, 458758, 1, 3, 458784, 1, 3, 458804, 1, 3, 524289, 0, 0, 589830, 1, 3, 589856, 1, 3, 589876, 1, 3, 655392, 1, 3, 720902, 1, 3, 720948, 1, 3, 786452, 1, 3, 786454, 1, 3, 786456, 1, 3, 786458, 1, 3, 786460, 1, 3, 786462, 1, 3, 786464, 1, 3, 851974, 1, 3, 852020, 1, 3, 983046, 1, 3, 983092, 1, 3, 1114118, 1, 3, 1114164, 1, 3, 1245190, 1, 3, 1245236, 1, 3, 1376262, 1, 3, 1376269, 1, 3, 1376271, 1, 3, 1376273, 1, 3, 1376275, 1, 3, 1376308, 1, 3, 1507334, 1, 3, 1507380, 1, 3, 1638406, 1, 3, 1638452, 1, 3, 1769478, 1, 3, 1769524, 1, 3, 1900550, 1, 3, 1900596, 1, 3, 2031622, 1, 3, 2031668, 1, 3, 2162694, 1, 0, 2162696, 1, 1, 2162698, 1, 1, 2162700, 1, 1, 2162702, 1, 1, 2162704, 1, 1, 2162706, 1, 1, 2162708, 1, 1, 2162710, 1, 1, 2162712, 1, 1, 2162714, 1, 1, 2162716, 1, 1, 2162718, 1, 1, 2162720, 1, 1, 2162722, 1, 1, 2162724, 1, 1, 2162726, 1, 1, 2162728, 1, 1, 2162730, 1, 1, 2162732, 1, 1, 2162734, 1, 1, 2162736, 1, 1, 2162738, 1, 2, 2162740, 1, 3 )
 
-[node name="Goal" parent="." instance=ExtResource( 4 )]
-position = Vector2( 987.592, 434.983 )
+[node name="Goal" parent="." instance=ExtResource( 1 )]
+position = Vector2( 763.558, 489.951 )
 scale = Vector2( 1.64, 1.64 )
 
 [node name="Enemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 482.624, 543.774 )
-
-[node name="Enemy2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 516.297, 543.774 )
-
-[node name="Enemy3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 549.971, 543.774 )
-
-[node name="Enemy4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 582.971, 543.774 )
-
-[node name="Enemy5" parent="." instance=ExtResource( 5 )]
-position = Vector2( 615.971, 543.774 )
+position = Vector2( 488.69, 152.918 )
 
 [connection signal="NextLevel" from="Player" to="." method="onLevelChangeRequest"]
 [connection signal="ReloadLevel" from="Player" to="." method="onReloadRequest"]
