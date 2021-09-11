@@ -5,10 +5,13 @@ namespace youmustlose.characters {
     public class Player : KinematicBody2D {
 
         [Export] public float relativeMovementForce = 20.0f;
+        [Export] public float airMoveMultiplier = 0.75f;
 
         [Export] public Vector2 gravityRel = new Vector2(0.0f, 10.0f);
 
         [Export] public Vector2 jumpImpulseNorm = new Vector2(0.0f, 100.0f);
+
+        [Export] public float coyoteTime = 0.1f;
 
         [Export] public int maxJumps = 2;
 
@@ -33,7 +36,11 @@ namespace youmustlose.characters {
 
         private bool jumped = false;
 
+        private bool grounded = false;
+
         private int jumps = 0;
+
+        private float timeSinceGrounded = 0.0f;
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready () {
@@ -45,11 +52,11 @@ namespace youmustlose.characters {
         private Vector2 handleInput (float delta) {
             var deltaVel = new Vector2(0, 0);
             if (Input.IsActionPressed("movement_left")) {
-                deltaVel.x -= movementForce * delta;
+                deltaVel.x -= movementForce * delta * (grounded ? 1 : airMoveMultiplier);
             }
 
             if (Input.IsActionPressed("movement_right")) {
-                deltaVel.x += movementForce * delta;
+                deltaVel.x += movementForce * delta * (grounded ? 1 : airMoveMultiplier);
             }
 
             if (Input.IsActionPressed("movement_jump")) {
@@ -59,6 +66,7 @@ namespace youmustlose.characters {
                     deltaVel += jumpImpulseNorm;
                     jumps++;
                     jumped = true;
+                    grounded = false;
                 }
             } else {
                 jumped = false;
@@ -82,6 +90,14 @@ namespace youmustlose.characters {
             velocity = MoveAndSlide(velocity, Vector2.Up);
             if (IsOnFloor()) {
                 jumps = 0;
+                timeSinceGrounded = 0.0f;
+                grounded = true;
+            } else {
+                timeSinceGrounded += delta;
+                if (timeSinceGrounded > coyoteTime && jumps == 0) {
+                    jumps = 1;
+                    grounded = false;
+                }
             }
         }
 

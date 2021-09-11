@@ -23,7 +23,8 @@ height = 9.60889
 script = ExtResource( 2 )
 relativeMovementForce = 400.0
 gravityRel = Vector2( 0, 20 )
-jumpImpulseNorm = Vector2( 0, 700 )
+jumpImpulseNorm = Vector2( 0, 600 )
+coyoteTime = 0.09
 horizontalFriction = 10.0
 minXVel = 10.0
 
