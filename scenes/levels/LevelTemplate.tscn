@@ -1,9 +1,9 @@
 [gd_scene load_steps=31 format=2]
 
-[ext_resource path="res://src/Level.cs" type="Script" id=1]
+[ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tilesheet_complete_2X.png" type="Texture" id=3]
-[ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Level.cs" type="Script" id=4]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -247,7 +247,7 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 1/z_index = 0
 
 [node name="World" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 374.438, 124.174 )
@@ -260,12 +260,12 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 524289, 0, 0, 983047, 1, 0, 983049, 1, 1, 983051, 1, 1, 983053, 1, 1, 983055, 1, 1, 983057, 1, 1, 983059, 1, 2 )
 
-[node name="Goal" parent="." instance=ExtResource( 4 )]
+[node name="Goal" parent="." instance=ExtResource( 1 )]
 position = Vector2( 650.853, 470.902 )
 scale = Vector2( 1.64, 1.64 )
 
 [node name="Enemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 264.866, 467.223 )
 
-[connection signal="NextLevel" from="Player" to="." method="onReloadRequest"]
+[connection signal="NextLevel" from="Player" to="." method="onLevelChangeRequest"]
 [connection signal="ReloadLevel" from="Player" to="." method="onReloadRequest"]

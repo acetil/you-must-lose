@@ -21,6 +21,11 @@ height = 9.60889
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
+relativeMovementForce = 400.0
+gravityRel = Vector2( 0, 20 )
+jumpImpulseNorm = Vector2( 0, 700 )
+horizontalFriction = 10.0
+minXVel = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.25 )
