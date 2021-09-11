@@ -81,6 +81,12 @@ namespace youmustlose.characters {
 
         public void onAreaEntered(Area2D other) {
             Console.WriteLine("Collision detected!");
+
+            if (other.IsInGroup("goals")) {
+                Console.WriteLine("Collision detected with goal!");
+                QueueFree();
+            }
+            
         }
     }
 }
