@@ -114,6 +114,8 @@ namespace youmustlose.characters {
             } else if (other.IsInGroup("enemies")) {
                 Console.WriteLine("Collision detected with enemy!");
                 EmitSignal(nameof(NextLevel));
+            } else if (other.IsInGroup("death")) {
+                EmitSignal(nameof(NextLevel));
             }
         }
     }
