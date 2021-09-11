@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=2]
 
-[ext_resource path="res://src/World.cs" type="Script" id=1]
+[ext_resource path="res://src/Level.cs" type="Script" id=1]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tilesheet_complete_2X.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=4]
@@ -269,5 +269,7 @@ tile_data = PoolIntArray( 524289, 0, 0, 983047, 1, 0, 983049, 1, 1, 983051, 1, 1
 position = Vector2( 650.853, 470.902 )
 scale = Vector2( 1.64, 1.64 )
 
-[node name="Node2D" parent="." instance=ExtResource( 5 )]
+[node name="Enemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 264.866, 467.223 )
+
+[connection signal="ReloadLevel" from="Player" to="." method="onReloadRequest"]

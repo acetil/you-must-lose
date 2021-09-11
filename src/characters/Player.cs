@@ -16,6 +16,9 @@ namespace youmustlose.characters {
 
         [Export] public float minXVel = 0.001f;
 
+        [Signal]
+        public delegate void ReloadLevel ();
+
         private Vector2 velocity = new Vector2(0, 0);
         private Vector2 gravity;
         private Vector2 movementVel = new Vector2(0, 0);
@@ -84,10 +87,10 @@ namespace youmustlose.characters {
 
             if (other.IsInGroup("goals")) {
                 Console.WriteLine("Collision detected with goal!");
-                QueueFree();
+                EmitSignal(nameof(ReloadLevel));
             } else if (other.IsInGroup("enemies")) {
                 Console.WriteLine("Collision detected with enemy!");
-                QueueFree();
+                EmitSignal(nameof(ReloadLevel));
             }
         }
     }
