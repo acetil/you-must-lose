@@ -78,5 +78,9 @@ namespace youmustlose.characters {
                 jumps = 0;
             }
         }
+
+        public void onAreaEntered(Area2D other) {
+            Console.WriteLine("Collision detected!");
+        }
     }
 }

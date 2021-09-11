@@ -34,6 +34,12 @@ movement_jump={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Level Geometry"
+2d_physics/layer_2="Goal"
+2d_physics/layer_3="Enemy"
+
 [physics]
 
 common/enable_pause_aware_picking=true
