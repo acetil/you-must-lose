@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Godot;
 
 namespace youmustlose.characters {
@@ -44,6 +46,8 @@ namespace youmustlose.characters {
         private int jumps = 0;
 
         private float timeSinceGrounded = 0.0f;
+
+        private bool movingDeathPrimed = false;
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready () {
@@ -113,10 +117,31 @@ namespace youmustlose.characters {
                 EmitSignal(nameof(ReloadLevel));
             } else if (other.IsInGroup("enemies")) {
                 Console.WriteLine("Collision detected with enemy!");
-                EmitSignal(nameof(NextLevel));
+                die();
             } else if (other.IsInGroup("death")) {
-                EmitSignal(nameof(NextLevel));
+                die();
+            } else if (other.IsInGroup("prime_moving")) {
+                Console.WriteLine("Moving death primed!");
+                movingDeathPrimed = true;
             }
+        }
+
+        public void onAreaExited (Area2D other) {
+            if (other.IsInGroup("prime_moving")) {
+                Console.WriteLine("Moving death unprimed!");
+                movingDeathPrimed = false;
+            }
+        }
+
+        public void onBodyEntered (Node other) {
+            Console.WriteLine("Detected body collision!");
+            if (other.IsInGroup("moving") && movingDeathPrimed) {
+                die();
+            }
+        }
+
+        private void die () {
+            EmitSignal(nameof(NextLevel));
         }
     }
 }
