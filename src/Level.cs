@@ -25,8 +25,8 @@ namespace youmustlose {
 					listeners.Add(listener);
 				}
 
-				if (n is ILevelEventSignaller && n is Node node) {
-					node.Connect(nameof(ILevelEventSignaller.LevelEvent), this, nameof(onLevelEvent));
+				if (n is LevelEventSignaller node) {
+					node.Connect(nameof(LevelEventSignaller.LevelEvent), this, nameof(onLevelEvent));
 				}
 			}
 		}
