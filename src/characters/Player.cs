@@ -85,8 +85,10 @@ namespace youmustlose.characters {
             if (other.IsInGroup("goals")) {
                 Console.WriteLine("Collision detected with goal!");
                 QueueFree();
+            } else if (other.IsInGroup("enemies")) {
+                Console.WriteLine("Collision detected with enemy!");
+                QueueFree();
             }
-            
         }
     }
 }
