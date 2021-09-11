@@ -268,4 +268,5 @@ scale = Vector2( 1.64, 1.64 )
 position = Vector2( 264.866, 467.223 )
 
 [connection signal="NextLevel" from="Player" to="." method="onLevelChangeRequest"]
+[connection signal="OnJump" from="Player" to="." method="onJump"]
 [connection signal="ReloadLevel" from="Player" to="." method="onReloadRequest"]

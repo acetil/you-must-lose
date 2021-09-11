@@ -25,6 +25,9 @@ namespace youmustlose.characters {
         [Signal] 
         public delegate void NextLevel ();
 
+        [Signal]
+        public delegate void OnJump (bool isDouble);
+
         private Vector2 velocity = new Vector2(0, 0);
         private Vector2 gravity;
         private Vector2 movementVel = new Vector2(0, 0);
@@ -67,6 +70,7 @@ namespace youmustlose.characters {
                     jumps++;
                     jumped = true;
                     grounded = false;
+                    EmitSignal(nameof(OnJump), jumps != 1);
                 }
             } else {
                 jumped = false;

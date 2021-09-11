@@ -15,6 +15,8 @@ namespace youmustlose {
 		public delegate void ReloadLevel ();
 
 		private List<ILevelEventListener> listeners = new List<ILevelEventListener>();
+
+		private List<IJumpListener> jumpListeners = new List<IJumpListener>();
 		
 		public override void _Ready () {
 			var children = GetChildren();
@@ -23,6 +25,10 @@ namespace youmustlose {
 				// ReSharper disable once ConvertIfStatementToSwitchStatement
 				if (n is ILevelEventListener listener) {
 					listeners.Add(listener);
+				}
+
+				if (n is IJumpListener jumpListener) {
+					jumpListeners.Add(jumpListener);
 				}
 
 				if (n is LevelEventSignaller node) {
@@ -42,6 +48,12 @@ namespace youmustlose {
 		public void onLevelEvent (string eventName) {
 			foreach (var node in listeners) {
 				node.onLevelEvent(eventName);
+			}
+		}
+
+		public void onJump (bool isDouble) {
+			foreach (var node in jumpListeners) {
+				node.onJump(isDouble);
 			}
 		}
 		
