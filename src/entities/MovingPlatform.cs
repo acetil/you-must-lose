@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using youmustlose.characters;
 
 namespace youmustlose.entities {
 	public class MovingPlatform : KinematicBody2D {
@@ -37,11 +38,18 @@ namespace youmustlose.entities {
 			}
 
 			vel.x *= direction;
-			MoveAndSlide(vel);
+			var coll = MoveAndCollide(vel * delta);
+			
+			if (doFlip || coll != null && !(coll.Collider is Player)) {
+				direction = -direction;
+			}
+			
+			
+			/*MoveAndSlide(vel);
 
 			if (doFlip) {
 				direction = -direction;
-			}
+			}*/
 		}
 		private static float clamp (float val, float min, float max) {
 			if (min > val) {
