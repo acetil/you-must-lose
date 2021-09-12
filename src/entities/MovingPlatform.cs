@@ -3,7 +3,7 @@ using Godot;
 using youmustlose.characters;
 
 namespace youmustlose.entities {
-	public class MovingPlatform : KinematicBody2D {
+	public class MovingPlatform : KinematicBody2D, ILevelEventListener {
 		[Export]
 		public float minX = 100.0f;
 		[Export]
@@ -13,6 +13,8 @@ namespace youmustlose.entities {
 		public float velocity = 100;
 
 		[Export] public float yPos;
+
+		[Export] public string hideEvent;
 
 		private int direction = 1;
 
@@ -57,6 +59,21 @@ namespace youmustlose.entities {
 			}
 			return max < val ? max : val;
 		}
-
+		
+		public void onLevelEvent (string eventName) {
+			if (eventName == hideEvent) {
+				SetProcess(false);
+				SetPhysicsProcess(false);
+				Hide();
+				CollisionLayer = 0;
+				CollisionMask = 0;
+				foreach (var n in GetChildren()) {
+					if (n is Area2D area2D) {
+						area2D.CollisionLayer = 0;
+						area2D.CollisionMask = 0;
+					}
+				}
+			}
+		}
 	}
 }

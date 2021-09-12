@@ -13,6 +13,8 @@ namespace youmustlose.entities {
 					}
 				}
 				Hide();
+				SetProcess(false);
+				SetPhysicsProcess(false);
 			}
 		}
 	}
