@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/entities/SlidingCollider.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/entities/SlidingDoor.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/entities/PrankArea.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/entities/Switch.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -299,7 +299,7 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 152.264, 529.052 )
+position = Vector2( 136.804, 529.052 )
 scale = Vector2( 1.35479, 1.35728 )
 z_index = 1
 
@@ -344,16 +344,13 @@ disengageEvent = "test2"
 [node name="Collider" parent="MovingPlatform" instance=ExtResource( 6 )]
 position = Vector2( -47.6671, 3.10706 )
 
-[node name="PrankRectangle" parent="." instance=ExtResource( 8 )]
-position = Vector2( 351.742, 504.304 )
-scale = Vector2( 4.52, 5.56 )
-eventName = "test"
-
-[node name="PrankRectangle2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 138.649, 347.57 )
-scale = Vector2( 4.52, 5.56 )
-eventName = "test2"
+[node name="Switch" parent="." instance=ExtResource( 8 )]
+position = Vector2( 320.024, 513.58 )
+scale = Vector2( 0.640001, 0.640001 )
+onEvent = "test"
+offEvent = "test2"
 
 [connection signal="NextLevel" from="Player" to="." method="onLevelChangeRequest"]
+[connection signal="OnInteract" from="Player" to="." method="onInteraction"]
 [connection signal="OnJump" from="Player" to="." method="onJump"]
 [connection signal="ReloadLevel" from="Player" to="." method="onReloadRequest"]

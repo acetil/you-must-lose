@@ -21,6 +21,8 @@ namespace youmustlose.characters {
 
         [Export] public float minXVel = 0.001f;
 
+        [Export] public string interactionEvent = "interact";
+
         [Signal]
         public delegate void ReloadLevel ();
 
@@ -29,6 +31,9 @@ namespace youmustlose.characters {
 
         [Signal]
         public delegate void OnJump (bool isDouble);
+
+        [Signal]
+        public delegate void OnInteract (string eventName);
 
         private Vector2 velocity = new Vector2(0, 0);
         private Vector2 gravity;
@@ -49,6 +54,8 @@ namespace youmustlose.characters {
 
         private bool movingDeathPrimed = false;
 
+        private bool hasInteracted = false;
+        
         // Called when the node enters the scene tree for the first time.
         public override void _Ready () {
             movementForce = relativeMovementForce * SPEED_MULT;
@@ -78,6 +85,15 @@ namespace youmustlose.characters {
                 }
             } else {
                 jumped = false;
+            }
+
+            if (Input.IsActionPressed("player_interact")) {
+                if (!hasInteracted) {
+                    EmitSignal(nameof(OnInteract), interactionEvent);
+                    hasInteracted = true;
+                }
+            } else {
+                hasInteracted = false;
             }
 
             return deltaVel;

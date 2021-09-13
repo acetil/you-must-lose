@@ -56,6 +56,9 @@ namespace youmustlose {
 				node.onJump(isDouble);
 			}
 		}
-		
+
+		public void onInteraction (string interactionEvent) {
+			onLevelEvent(interactionEvent);
+		}
 	}
 }
