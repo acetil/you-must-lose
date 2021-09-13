@@ -25,6 +25,8 @@ namespace youmustlose.characters {
 
         [Export] public float floorTolerance = 0.0f;
 
+        [Export] public bool reversed = false;
+
         [Signal]
         public delegate void ReloadLevel ();
 
@@ -132,7 +134,11 @@ namespace youmustlose.characters {
 
             if (other.IsInGroup("goals")) {
                 Console.WriteLine("Collision detected with goal!");
-                EmitSignal(nameof(ReloadLevel));
+                if (!reversed) {
+                    EmitSignal(nameof(ReloadLevel));
+                } else {
+                    EmitSignal(nameof(NextLevel));
+                }
             } else if (other.IsInGroup("enemies")) {
                 Console.WriteLine("Collision detected with enemy!");
                 die();
@@ -173,7 +179,11 @@ namespace youmustlose.characters {
         }
 
         private void die () {
-            EmitSignal(nameof(NextLevel));
+            if (!reversed) {
+                EmitSignal(nameof(NextLevel));
+            } else {
+                EmitSignal(nameof(ReloadLevel));
+            }
         }
     }
 }
