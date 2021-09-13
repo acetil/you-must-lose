@@ -256,7 +256,7 @@ script = ExtResource( 4 )
 nextLevel = ExtResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 96.2039, 466.411 )
+position = Vector2( 108.096, 459.276 )
 scale = Vector2( 1.35479, 1.35728 )
 
 [node name="TileMap" type="TileMap" parent="."]

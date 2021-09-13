@@ -1,10 +1,13 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tilesheet_complete_2X.png" type="Texture" id=3]
 [ext_resource path="res://src/Level.cs" type="Script" id=4]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/entities/SlidingCollider.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/entities/SlidingDoor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/entities/PrankArea.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -296,8 +299,9 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 104.323, 515.911 )
+position = Vector2( 152.264, 529.052 )
 scale = Vector2( 1.35479, 1.35728 )
+z_index = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 0.26, 0.26 )
@@ -324,7 +328,31 @@ position = Vector2( 551.858, 294.125 )
 scale = Vector2( 1.64, 1.64 )
 
 [node name="Enemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 264.866, 467.223 )
+position = Vector2( 606.045, 508.942 )
+
+[node name="MovingPlatform" parent="." instance=ExtResource( 7 )]
+position = Vector2( 811.885, 347.553 )
+rotation = 3.14159
+scale = Vector2( 1.67394, 0.244641 )
+collision_mask = 32
+startPos = Vector2( 812, 348 )
+endPos = Vector2( 910, 348 )
+yPos = 346.0
+engageEvent = "test"
+disengageEvent = "test2"
+
+[node name="Collider" parent="MovingPlatform" instance=ExtResource( 6 )]
+position = Vector2( -47.6671, 3.10706 )
+
+[node name="PrankRectangle" parent="." instance=ExtResource( 8 )]
+position = Vector2( 351.742, 504.304 )
+scale = Vector2( 4.52, 5.56 )
+eventName = "test"
+
+[node name="PrankRectangle2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 138.649, 347.57 )
+scale = Vector2( 4.52, 5.56 )
+eventName = "test2"
 
 [connection signal="NextLevel" from="Player" to="." method="onLevelChangeRequest"]
 [connection signal="OnJump" from="Player" to="." method="onJump"]
