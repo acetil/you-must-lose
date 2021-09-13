@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/tilesheet_complete_2X.png" type="Texture" id=3]
 [ext_resource path="res://src/Level.cs" type="Script" id=4]
 [ext_resource path="res://src/level_logic/Level7Logic.cs" type="Script" id=5]
-[ext_resource path="res://scenes/TestLevel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/levels/Level8.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )

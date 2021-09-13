@@ -66,9 +66,15 @@ namespace youmustlose.entities {
 			if (eventName == engageEvent) {
 				target = endPos;
 				GetNode<MovingPlatformArea>("Collider").engaged = true;
-			} else {
+				if (!IsInGroup("moving")) {
+					AddToGroup("moving");
+				}
+			} else if (eventName == disengageEvent) {
 				target = startPos;
 				GetNode<MovingPlatformArea>("Collider").engaged = false;
+				if (IsInGroup("moving")) {
+					RemoveFromGroup("moving");
+				}
 			}
 		}
 	}

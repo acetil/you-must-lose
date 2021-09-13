@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Godot;
@@ -46,6 +47,7 @@ namespace youmustlose {
 		}
 
 		public void onLevelEvent (string eventName) {
+			Console.WriteLine("Raised event: " + eventName);
 			foreach (var node in listeners) {
 				node.onLevelEvent(eventName);
 			}
