@@ -1,15 +1,12 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=34 format=2]
 
-[ext_resource path="res://scenes/entities/Switch.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tilesheet_complete_2X.png" type="Texture" id=3]
 [ext_resource path="res://src/Level.cs" type="Script" id=4]
-[ext_resource path="res://src/entities/RotatingNode.cs" type="Script" id=5]
-[ext_resource path="res://src/entities/EventPassthrough.cs" type="Script" id=6]
-[ext_resource path="res://src/entities/AppearingDoor.cs" type="Script" id=7]
-[ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/entities/AppearingDoor.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/levels/Level10.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/entities/Switch.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/level_logic/Level10Logic.cs" type="Script" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -251,68 +248,56 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 } ]
 1/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 365.527, 198.187 )
+
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
-nextLevel = ExtResource( 10 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 283.435, 529.117 )
+position = Vector2( 660.44, 430.335 )
 scale = Vector2( 1.35479, 1.35728 )
-floorTolerance = 0.5
 
-[node name="Pivot" type="Node2D" parent="."]
-position = Vector2( 512, 300 )
-script = ExtResource( 6 )
-
-[node name="Rotation" type="Node2D" parent="Pivot"]
-script = ExtResource( 5 )
-rotateEvent = "prank"
-angularVelocity = 0.5
-
-[node name="TileMap" type="TileMap" parent="Pivot/Rotation"]
+[node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 0.26, 0.26 )
 tile_set = SubResource( 25 )
 cell_size = Vector2( 128, 128 )
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( -524297, 1, 0, -524296, 1, 0, -524295, 1, 0, -524294, 1, 0, -524293, 1, 0, -524292, 1, 0, -524291, 1, 0, -524290, 1, 0, -524289, 1, 0, -589824, 1, 0, -589823, 1, 0, -589822, 1, 0, -589821, 1, 0, -589820, 1, 0, -589819, 1, 0, -589818, 1, 0, -589817, 1, 0, -589816, 1, 0, -458761, 1, 0, -524288, 1, 0, -524280, 1, 0, -393225, 1, 0, -458752, 1, 0, -458744, 1, 0, -327689, 1, 0, -393216, 1, 0, -393213, 1, 0, -393208, 1, 0, -262153, 1, 0, -262150, 1, 0, -262149, 1, 0, -262148, 1, 0, -327677, 1, 0, -327672, 1, 0, -196617, 1, 0, -262136, 1, 0, -131081, 1, 0, -196600, 1, 0, -65545, 1, 0, -65538, 1, 0, -65537, 1, 0, -131066, 1, 0, -131065, 1, 0, -131064, 1, 0, -9, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, 65527, 1, 0, 65528, 1, 0, 65529, 1, 0, 2, 1, 0, 3, 1, 0, 8, 1, 0, 131063, 1, 0, 131064, 1, 0, 131065, 1, 0, 65544, 1, 0, 196599, 1, 0, 131080, 1, 0, 262135, 1, 0, 262143, 1, 0, 196608, 1, 0, 196609, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 327671, 1, 0, 262148, 1, 0, 262152, 1, 0, 393207, 1, 0, 393211, 1, 0, 393212, 1, 0, 327688, 1, 0, 458743, 1, 0, 524279, 1, 0, 589815, 1, 0, 589816, 1, 0, 589817, 1, 0, 589818, 1, 0, 589819, 1, 0, 589820, 1, 0, 589821, 1, 0, 589822, 1, 0, 589823, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0 )
+tile_data = PoolIntArray( 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 1, 0, 262161, 1, 0, 262162, 1, 0, 262163, 1, 0, 262164, 1, 0, 262165, 1, 0, 327685, 1, 0, 327701, 1, 0, 393221, 1, 0, 393237, 1, 0, 458757, 1, 0, 458773, 1, 0, 524289, 0, 0, 524293, 1, 0, 524309, 1, 0, 589829, 1, 0, 589845, 1, 0, 655365, 1, 0, 655381, 1, 0, 720901, 1, 0, 720917, 1, 0, 786437, 1, 0, 786453, 1, 0, 851973, 1, 0, 851989, 1, 0, 917509, 1, 0, 917510, 1, 0, 917511, 1, 0, 917512, 1, 0, 917513, 1, 0, 917514, 1, 0, 917515, 1, 0, 917516, 1, 0, 917517, 1, 0, 917518, 1, 0, 917519, 1, 0, 917520, 1, 0, 917521, 1, 0, 917522, 1, 0, 917523, 1, 0, 917524, 1, 0, 917525, 1, 0 )
 
-[node name="Switch" parent="Pivot/Rotation" instance=ExtResource( 1 )]
-position = Vector2( -209.763, -55.4374 )
-scale = Vector2( 0.680001, 0.680001 )
-onEvent = "door_open"
-offEvent = "door_close"
+[node name="Goal" parent="." instance=ExtResource( 1 )]
+position = Vector2( 442.964, 202.201 )
+scale = Vector2( 1.64, 1.64 )
 
-[node name="MovingPlatform" parent="Pivot/Rotation" instance=ExtResource( 9 )]
-position = Vector2( 147, 216 )
-rotation = 1.5708
-scale = Vector2( 1.54903, 0.16 )
-script = ExtResource( 7 )
-hideEvent = "door_open"
+[node name="Goal2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 229.417, 438.375 )
+scale = Vector2( 1.64, 1.64 )
 
-[node name="Area2D" type="Area2D" parent="Pivot/Rotation" groups=[
-"enemies",
-]]
+[node name="Enemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 322.849, 202.765 )
+
+[node name="Switch" parent="." instance=ExtResource( 6 )]
+position = Vector2( 321.027, 395.98 )
+scale = Vector2( 0.599999, 0.599999 )
+onEvent = "kill_parrot"
+offEvent = "a"
+
+[node name="Switch2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 452.548, 393.151 )
+scale = Vector2( 0.599999, 0.599999 )
+onEvent = "kill_dev"
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 428.507, 295.571 )
 collision_layer = 4
-collision_mask = 0
+collision_mask = 4
+script = ExtResource( 7 )
+ev1 = "kill_dev"
+ev2 = "kill_parrot"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pivot/Rotation/Area2D"]
-polygon = PoolVector2Array( 364, 24, 421, 22, 419, 488, -54, 484, -52, 375, 331, 374, 278, 324, 317, 282, 362, 278, 305, 23 )
-
-[node name="Goal" parent="Pivot/Rotation" instance=ExtResource( 8 )]
-position = Vector2( -29.6985, -200.818 )
-
-[node name="Goal2" parent="Pivot/Rotation" instance=ExtResource( 8 )]
-position = Vector2( -165.463, 29.6985 )
-
-[node name="Goal3" parent="Pivot/Rotation" instance=ExtResource( 8 )]
-position = Vector2( 216.375, -197.99 )
-
-[node name="Goal4" parent="Pivot/Rotation" instance=ExtResource( 8 )]
-position = Vector2( -231.931, -233.345 )
-
-[node name="Goal5" parent="Pivot/Rotation" instance=ExtResource( 8 )]
-position = Vector2( 193.747, 57.9827 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 26 )
 
 [connection signal="NextLevel" from="Player" to="." method="onLevelChangeRequest"]
 [connection signal="OnInteract" from="Player" to="." method="onInteraction"]
