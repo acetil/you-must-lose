@@ -23,6 +23,8 @@ namespace youmustlose.characters {
 
         [Export] public string interactionEvent = "interact";
 
+        [Export] public float floorTolerance = 0.0f;
+
         [Signal]
         public delegate void ReloadLevel ();
 
@@ -112,7 +114,7 @@ namespace youmustlose.characters {
             }
             
             velocity = MoveAndSlide(velocity, Vector2.Up);
-            if (IsOnFloor()) {
+            if (checkOnFloor()) {
                 jumps = 0;
                 timeSinceGrounded = 0.0f;
                 grounded = true;
@@ -154,6 +156,20 @@ namespace youmustlose.characters {
             if (other.IsInGroup("moving") && movingDeathPrimed) {
                 die();
             }
+        }
+
+        private bool checkOnFloor () {
+            var upVec = Vector2.Up;
+            for (var i = 0; i < GetSlideCount(); i++) {
+                var coll = GetSlideCollision(i);
+                var angle = upVec.AngleTo(coll.Normal);
+                if (Math.Abs(angle) <= floorTolerance) {
+                    return true;
+                }
+                Console.WriteLine("Upvec: " + upVec + ", normal: " + coll.Normal + ", angle to: " + angle);
+            }
+            Console.WriteLine("No floor collision!");
+            return false;
         }
 
         private void die () {
