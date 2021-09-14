@@ -28,6 +28,7 @@ namespace youmustlose.characters {
 
 		public void onJump () {
 			Play(jumpStartAnim);
+			Frame = 0;
 			swapOnComplete = jumpLandAnim;
 			grounded = false;
 		}
