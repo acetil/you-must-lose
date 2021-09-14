@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/entities/Switch.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/level_logic/Level10Logic.cs" type="Script" id=7]
 [ext_resource path="res://scenes/levels/Level11.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/levels/leveltiles.tres" type="TileSet" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -255,15 +256,18 @@ extents = Vector2( 365.527, 198.187 )
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
 nextLevel = ExtResource( 8 )
+levelName = "Ring Level 0"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 660.44, 430.335 )
+position = Vector2( 585.605, 449.044 )
 scale = Vector2( 1.35479, 1.35728 )
 
 [node name="TileMap" type="TileMap" parent="."]
+visible = false
 scale = Vector2( 0.26, 0.26 )
 tile_set = SubResource( 25 )
 cell_size = Vector2( 128, 128 )
+collision_layer = 3
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 1, 0, 262161, 1, 0, 262162, 1, 0, 262163, 1, 0, 262164, 1, 0, 262165, 1, 0, 327685, 1, 0, 327701, 1, 0, 393221, 1, 0, 393237, 1, 0, 458757, 1, 0, 458773, 1, 0, 524289, 0, 0, 524293, 1, 0, 524309, 1, 0, 589829, 1, 0, 589845, 1, 0, 655365, 1, 0, 655381, 1, 0, 720901, 1, 0, 720917, 1, 0, 786437, 1, 0, 786453, 1, 0, 851973, 1, 0, 851989, 1, 0, 917509, 1, 0, 917510, 1, 0, 917511, 1, 0, 917512, 1, 0, 917513, 1, 0, 917514, 1, 0, 917515, 1, 0, 917516, 1, 0, 917517, 1, 0, 917518, 1, 0, 917519, 1, 0, 917520, 1, 0, 917521, 1, 0, 917522, 1, 0, 917523, 1, 0, 917524, 1, 0, 917525, 1, 0 )
@@ -273,20 +277,20 @@ position = Vector2( 442.964, 202.201 )
 scale = Vector2( 1.64, 1.64 )
 
 [node name="Goal2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 229.417, 438.375 )
+position = Vector2( 259.708, 449.957 )
 scale = Vector2( 1.64, 1.64 )
 
 [node name="Enemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 322.849, 202.765 )
 
 [node name="Switch" parent="." instance=ExtResource( 6 )]
-position = Vector2( 321.027, 395.98 )
+position = Vector2( 358.445, 427.161 )
 scale = Vector2( 0.599999, 0.599999 )
 onEvent = "kill_parrot"
 offEvent = "a"
 
 [node name="Switch2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 452.548, 393.151 )
+position = Vector2( 467.693, 427.005 )
 scale = Vector2( 0.599999, 0.599999 )
 onEvent = "kill_dev"
 
@@ -299,7 +303,14 @@ ev1 = "kill_dev"
 ev2 = "kill_parrot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -16.0363, 110.471 )
 shape = SubResource( 26 )
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource( 9 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 1245198, 7, 65536, 1245199, 7, 65536, 1245200, 7, 65536, 1245201, 7, 65536, 1245202, 7, 65536, 1245203, 7, 65536, 1245204, 7, 65536, 1245205, 7, 65536, 1245206, 7, 65536, 1245207, 7, 65536, 1245208, 7, 65536, 1245209, 7, 65536, 1245210, 7, 65536, 1245211, 7, 65536, 1245212, 7, 65536, 1245213, 7, 65536, 1245214, 7, 65536, 1245215, 7, 65536, 1245216, 7, 65536, 1245217, 7, 65536, 1245218, 7, 65536, 1245219, 7, 65536, 1245220, 7, 65536, 1245221, 7, 65536, 1245222, 7, 65536, 1245223, 7, 65536, 1245224, 7, 65536, 1310734, 7, 65536, 1310760, 7, 65536, 1376270, 7, 65536, 1376296, 7, 65536, 1441806, 7, 65536, 1441832, 7, 65536, 1507342, 7, 65536, 1507368, 7, 65536, 1572878, 7, 65536, 1572904, 7, 65536, 1638414, 7, 65536, 1638440, 7, 65536, 1703950, 7, 65536, 1703976, 7, 65536, 1769486, 7, 65536, 1769512, 7, 65536, 1835022, 7, 65536, 1835048, 7, 65536, 1900558, 7, 65536, 1900584, 7, 65536, 1966094, 7, 65536, 1966095, 7, 65536, 1966096, 7, 65536, 1966097, 7, 65536, 1966098, 7, 65536, 1966099, 7, 65536, 1966100, 7, 65536, 1966101, 7, 65536, 1966102, 7, 65536, 1966103, 7, 65536, 1966104, 7, 65536, 1966105, 7, 65536, 1966106, 7, 65536, 1966107, 7, 65536, 1966108, 7, 65536, 1966109, 7, 65536, 1966110, 7, 65536, 1966111, 7, 65536, 1966112, 7, 65536, 1966113, 7, 65536, 1966114, 7, 65536, 1966115, 7, 65536, 1966116, 7, 65536, 1966117, 7, 65536, 1966118, 7, 65536, 1966119, 7, 65536, 1966120, 7, 65536 )
 
 [connection signal="NextLevel" from="Player" to="." method="onLevelChangeRequest"]
 [connection signal="OnInteract" from="Player" to="." method="onInteraction"]

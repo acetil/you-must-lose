@@ -9,8 +9,11 @@ namespace youmustlose {
 
 		private Level currentLevel = null;
 
+		private GUI gui;
+
 
 		public override void _Ready () {
+			gui = GetNode<GUI>("GUI");
 			changeLevel(firstLevel);
 		}
 
@@ -34,6 +37,7 @@ namespace youmustlose {
 				//AddChild(node);
 				setupSignals();
 				currentScene = levelScene;
+				gui.setLevelText(level.levelName);
 			} else {
 				Console.Error.WriteLine("Error: non-level scene!");
 			}

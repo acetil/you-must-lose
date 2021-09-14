@@ -8,6 +8,7 @@ namespace youmustlose {
 	public class Level : Node2D {
 
 		[Export] public PackedScene nextLevel;
+		[Export] public string levelName;
 		
 		[Signal] 
 		public delegate void ChangeLevel (PackedScene scene);

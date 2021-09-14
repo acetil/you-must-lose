@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/Level.cs" type="Script" id=1]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/levels/Level2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/levels/leveltiles.tres" type="TileSet" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -248,38 +249,54 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 1/z_index = 0
 
 [node name="World" type="Node2D"]
+position = Vector2( -24, -192 )
 script = ExtResource( 1 )
 nextLevel = ExtResource( 6 )
+levelName = "Level 1"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 105.047, 428.361 )
-scale = Vector2( 1.35479, 1.35728 )
+position = Vector2( 380.018, 556.863 )
 
 [node name="TileMap" type="TileMap" parent="."]
+visible = false
 scale = Vector2( 0.520001, 0.520001 )
 tile_set = SubResource( 25 )
+collision_layer = 0
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 524289, 0, 0, 917506, 1, 0, 917508, 1, 1, 917510, 1, 1, 917512, 1, 1, 917514, 1, 1, 917516, 1, 2, 917523, 1, 0, 917525, 1, 1, 917527, 1, 1, 917529, 1, 1, 917531, 1, 1, 917533, 1, 2 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
-position = Vector2( 987.592, 434.983 )
-scale = Vector2( 4.08, 4.08 )
+position = Vector2( 661.477, 562 )
 
 [node name="Enemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 482.624, 543.774 )
+visible = false
+position = Vector2( 518.682, 571.118 )
+scale = Vector2( 1.16, 0.120002 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 516.297, 543.774 )
+visible = false
+position = Vector2( 478.457, 690.09 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 549.971, 543.774 )
+visible = false
+position = Vector2( 512.131, 690.09 )
 
 [node name="Enemy4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 582.971, 543.774 )
+visible = false
+position = Vector2( 545.131, 690.09 )
 
 [node name="Enemy5" parent="." instance=ExtResource( 5 )]
-position = Vector2( 615.971, 543.774 )
+visible = false
+position = Vector2( 578.131, 690.09 )
+
+[node name="TileMap2" type="TileMap" parent="."]
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( 1507346, 22, 1, 1507347, 7, 6, 1507348, 7, 6, 1507349, 7, 6, 1507350, 7, 6, 1507351, 7, 6, 1507352, 7, 6, 1507353, 7, 6, 1507354, 7, 6, 1507355, 7, 6, 1507356, 7, 6, 1507357, 7, 6, 1507358, 7, 6, 1507359, 7, 6, 1507360, 7, 6, 1507361, 7, 6, 1507362, 7, 6, 1507363, 7, 6, 1507364, 7, 6, 1507365, 7, 6, 1507366, 7, 6, 1507367, 7, 6, 1507368, 7, 6, 1507369, 7, 6, 1507370, 7, 6, 1507371, 7, 6, 1507372, 22, 1, 1572882, 22, 1, 1572883, 47, 0, 1572884, 7, 65536, 1572885, 7, 65536, 1572886, 7, 65536, 1572887, 7, 65536, 1572888, 7, 65536, 1572889, 7, 65536, 1572890, 7, 65536, 1572891, 7, 65536, 1572892, 7, 65536, 1572893, 7, 65536, 1572894, 7, 65536, 1572895, 7, 65536, 1572896, 7, 65536, 1572897, 7, 65536, 1572898, 7, 65536, 1572899, 7, 65536, 1572900, 7, 65536, 1572901, 7, 65536, 1572902, 7, 65536, 1572903, 7, 65536, 1572904, 7, 65536, 1572905, 7, 65536, 1572906, 7, 65536, 1572907, 26, 0, 1572908, 22, 1, 1638418, 22, 1, 1638419, 11, 1, 1638443, 22, 0, 1638444, 22, 1, 1703954, 22, 1, 1703955, 11, 1, 1703979, 22, 0, 1703980, 22, 1, 1769490, 22, 1, 1769491, 11, 1, 1769515, 22, 0, 1769516, 22, 1, 1835026, 22, 1, 1835027, 11, 1, 1835051, 22, 0, 1835052, 22, 1, 1900562, 22, 1, 1900563, 11, 1, 1900587, 22, 0, 1900588, 22, 1, 1966098, 22, 1, 1966099, 11, 1, 1966123, 22, 0, 1966124, 22, 1, 2031634, 22, 1, 2031635, 11, 1, 2031659, 22, 0, 2031660, 22, 1, 2097170, 22, 1, 2097171, 11, 1, 2097195, 22, 0, 2097196, 22, 1, 2162706, 22, 1, 2162707, 11, 1, 2162731, 22, 0, 2162732, 22, 1, 2228242, 22, 1, 2228243, 11, 1, 2228267, 22, 0, 2228268, 22, 1, 2293778, 22, 1, 2293779, 11, 1, 2293791, 48, 131073, 2293792, 48, 131073, 2293793, 48, 131073, 2293803, 22, 0, 2293804, 22, 1, 2359314, 22, 1, 2359315, 34, 1, 2359316, 35, 0, 2359317, 35, 0, 2359318, 35, 0, 2359319, 35, 0, 2359320, 35, 0, 2359321, 35, 0, 2359322, 35, 0, 2359323, 35, 0, 2359324, 35, 0, 2359325, 35, 2, 2359326, 35, 0, 2359327, 35, 0, 2359328, 35, 0, 2359329, 35, 0, 2359330, 35, 0, 2359331, 35, 0, 2359332, 35, 0, 2359333, 35, 0, 2359334, 35, 0, 2359335, 35, 0, 2359336, 35, 0, 2359337, 35, 0, 2359338, 35, 0, 2359339, 37, 0, 2359340, 6, 0, 2424850, 22, 1, 2424851, 22, 1, 2424852, 22, 1, 2424853, 22, 1, 2424854, 22, 1, 2424855, 22, 1, 2424856, 22, 1, 2424857, 22, 1, 2424858, 22, 1, 2424859, 22, 1, 2424860, 22, 1, 2424861, 22, 1, 2424862, 22, 1, 2424863, 22, 1, 2424864, 22, 1, 2424865, 22, 1, 2424866, 22, 1, 2424867, 22, 1, 2424868, 22, 1, 2424869, 22, 1, 2424870, 22, 1, 2424871, 22, 1, 2424872, 22, 1, 2424873, 22, 1, 2424874, 22, 1, 2424875, 6, 0, 2424876, 6, 0 )
 
 [connection signal="NextLevel" from="Player" to="." method="onLevelChangeRequest"]
 [connection signal="ReloadLevel" from="Player" to="." method="onReloadRequest"]

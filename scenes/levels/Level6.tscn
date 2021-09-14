@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://src/entities/PrankShowTile.cs" type="Script" id=1]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=2]
@@ -9,7 +9,8 @@
 [ext_resource path="res://scenes/entities/PrankArea.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/level_logic/Level6Logic.cs" type="Script" id=9]
-[ext_resource path="res://scenes/TestLevel.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/levels/Level7.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/levels/leveltiles.tres" type="TileSet" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -254,23 +255,28 @@ points = PoolVector2Array( 0, 0, 128, 0, 128, 128, 0, 128 )
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
 nextLevel = ExtResource( 10 )
+levelName = "Level -69420"
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 108.096, 459.276 )
+position = Vector2( 89.3871, 493.13 )
 scale = Vector2( 1.35479, 1.35728 )
 
 [node name="TileMap" type="TileMap" parent="."]
+visible = false
 scale = Vector2( 0.26, 0.26 )
 tile_set = SubResource( 25 )
 cell_size = Vector2( 128, 128 )
+collision_layer = 0
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 1, 1, 1, 2, 1, 1, 3, 1, 1, 4, 1, 1, 5, 1, 1, 6, 1, 1, 7, 1, 1, 8, 1, 1, 9, 1, 1, 10, 1, 1, 11, 1, 1, 12, 1, 1, 13, 1, 1, 14, 1, 1, 15, 1, 1, 16, 1, 1, 17, 1, 1, 18, 1, 1, 19, 1, 1, 20, 1, 1, 21, 1, 1, 22, 1, 1, 23, 1, 1, 24, 1, 1, 25, 1, 1, 26, 1, 1, 27, 1, 1, 28, 1, 1, 29, 1, 1, 65537, 1, 1, 65565, 1, 1, 131073, 1, 1, 131101, 1, 1, 196609, 1, 1, 196637, 1, 1, 262145, 1, 1, 262173, 1, 1, 327681, 1, 1, 327709, 1, 1, 393217, 1, 1, 393245, 1, 1, 458753, 1, 1, 458781, 1, 1, 524289, 1, 1, 524317, 1, 1, 589825, 1, 1, 589853, 1, 1, 655361, 1, 1, 655389, 1, 1, 720897, 1, 1, 720921, 1, 1, 720922, 1, 1, 720923, 1, 1, 720924, 1, 1, 720925, 1, 1, 786433, 1, 1, 786461, 1, 1, 851969, 1, 1, 851997, 1, 1, 917505, 1, 1, 917533, 1, 1, 983041, 1, 1, 983042, 1, 1, 983043, 1, 1, 983069, 1, 1, 1048577, 1, 1, 1048605, 1, 1, 1114113, 1, 1, 1114114, 1, 1, 1114115, 1, 1, 1114116, 1, 1, 1114117, 1, 1, 1114118, 1, 1, 1114119, 1, 1, 1114120, 1, 1, 1114121, 1, 1, 1114122, 1, 1, 1114123, 1, 1, 1114124, 1, 1, 1114125, 1, 1, 1114126, 1, 1, 1114127, 1, 1, 1114128, 1, 1, 1114129, 1, 1, 1114130, 1, 1, 1114131, 1, 1, 1114132, 1, 1, 1114133, 1, 1, 1114134, 1, 1, 1114135, 1, 1, 1114136, 1, 1, 1114137, 1, 1, 1114138, 1, 1, 1114139, 1, 1, 1114140, 1, 1, 1114141, 1, 1, 1179725, 1073741825, 1 )
 
 [node name="TileMap2" type="TileMap" parent="."]
+visible = false
 scale = Vector2( 0.26, 0.26 )
 tile_set = SubResource( 25 )
 cell_size = Vector2( 128, 128 )
+collision_layer = 0
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 65546, 1, 0, 65558, 1, 0, 131082, 1, 0, 131094, 1, 0, 196618, 1, 0, 196630, 1, 0, 262154, 1, 0, 262166, 1, 0, 327690, 1, 0, 327702, 1, 0, 393226, 1, 0, 393238, 1, 0, 458762, 1, 0, 458774, 1, 0, 524298, 1, 0, 524310, 1, 0, 589834, 1, 0, 589846, 1, 0, 655370, 1, 0, 655382, 1, 0, 720906, 1, 0, 720918, 1, 0, 786442, 1, 0, 786454, 1, 0, 851978, 1, 0, 851990, 1, 0, 917514, 1, 0, 917526, 1, 0, 983050, 1, 0, 983062, 1, 0, 1048586, 1, 0, 1048598, 1, 0, 1179725, 1073741825, 1 )
@@ -281,67 +287,80 @@ eventName = "prank"
 position = Vector2( 949.568, 330.283 )
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 6 )]
-position = Vector2( 207.656, 515.21 )
-scale = Vector2( 0.639998, 0.639998 )
-minX = 160.0
+position = Vector2( 242.401, 517.883 )
+minX = 50.0
 maxX = 940.0
-velocity = 200.0
 yPos = 515.0
 hideEvent = "prank"
 
 [node name="PrankRectangle" parent="." instance=ExtResource( 7 )]
-position = Vector2( 594.603, 304.437 )
-scale = Vector2( 8.28581, 27.375 )
+position = Vector2( 361.188, 456.781 )
+scale = Vector2( 3.24856, 18.643 )
 eventName = "prank"
 
 [node name="Node" type="Node2D" parent="."]
-position = Vector2( 384.114, 45.1899 )
+position = Vector2( 237.843, 312.31 )
 script = ExtResource( 9 )
 startName = "prank"
 
 [node name="Goal" parent="Node" instance=ExtResource( 8 )]
+position = Vector2( 60.0517, -0.561218 )
 
 [node name="Goal2" parent="Node" instance=ExtResource( 8 )]
-position = Vector2( 22.595, 0 )
+position = Vector2( 71.9833, -1.1225 )
 
 [node name="Goal3" parent="Node" instance=ExtResource( 8 )]
 position = Vector2( 47.5683, 0 )
 
 [node name="Goal4" parent="Node" instance=ExtResource( 8 )]
-position = Vector2( 71.3525, 0 )
+position = Vector2( 144.874, 1.68372 )
 
 [node name="Goal5" parent="Node" instance=ExtResource( 8 )]
-position = Vector2( 95.1367, 0 )
+position = Vector2( 154.066, 1.12244 )
 
 [node name="Goal6" parent="Node" instance=ExtResource( 8 )]
-position = Vector2( 118.921, 0 )
+position = Vector2( 166.626, 0.561218 )
 
 [node name="Goal7" parent="Node" instance=ExtResource( 8 )]
-position = Vector2( 142.705, 0 )
+position = Vector2( 178.063, 0 )
 
 [node name="Goal8" parent="Node" instance=ExtResource( 8 )]
-position = Vector2( 167.678, 0 )
+position = Vector2( 191.25, 0 )
 
 [node name="Goal9" parent="Node" instance=ExtResource( 8 )]
-position = Vector2( 191.462, 0 )
+position = Vector2( 203.248, 0 )
 
 [node name="Goal10" parent="Node" instance=ExtResource( 8 )]
 position = Vector2( 216.436, 0 )
 
 [node name="Goal11" parent="Node" instance=ExtResource( 8 )]
-position = Vector2( 241.409, -2.37842 )
+position = Vector2( 131.969, 1.55017 )
 
 [node name="Goal12" parent="Node" instance=ExtResource( 8 )]
-position = Vector2( 266.382, -2.37842 )
+position = Vector2( 117.095, 2.11142 )
 
 [node name="Goal13" parent="Node" instance=ExtResource( 8 )]
-position = Vector2( 291.356, -2.37842 )
+position = Vector2( 106.15, 0.427732 )
 
 [node name="Goal14" parent="Node" instance=ExtResource( 8 )]
-position = Vector2( 316.329, -2.37842 )
+position = Vector2( 94.0815, 0.427732 )
 
 [node name="Goal15" parent="Node" instance=ExtResource( 8 )]
-position = Vector2( 336.546, -2.37842 )
+position = Vector2( 82.8696, -0.694735 )
+
+[node name="TileMap3" type="TileMap" parent="."]
+tile_set = ExtResource( 11 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 1179650, 7, 65543, 1179651, 7, 65543, 1179652, 7, 65543, 1179653, 7, 65543, 1179654, 7, 65543, 1179655, 7, 65543, 1179656, 7, 65543, 1179657, 7, 65543, 1179658, 7, 65543, 1179659, 7, 65543, 1179660, 7, 65543, 1179661, 7, 65543, 1179662, 7, 65543, 1179663, 7, 65543, 1179664, 7, 65543, 1179665, 7, 65543, 1179666, 7, 65543, 1179667, 7, 65543, 1179668, 7, 65543, 1179669, 7, 65543, 1179670, 7, 65543, 1179671, 7, 65543, 1179672, 7, 65543, 1179673, 7, 65543, 1179674, 7, 65543, 1179675, 7, 65543, 1179676, 7, 65543, 1179677, 7, 65543, 1179678, 7, 65543, 1179679, 7, 65543, 1179680, 7, 65543, 1179681, 7, 65543, 1179682, 7, 65543, 1179683, 7, 65543, 1179684, 7, 65543, 1179685, 7, 65543, 1179686, 7, 65543, 1179687, 7, 65543, 1245186, 7, 65543, 1245223, 7, 65543, 1310722, 7, 65543, 1310759, 7, 65543, 1376258, 7, 65543, 1376295, 7, 65543, 1441794, 7, 65543, 1441831, 7, 65543, 1507330, 7, 65543, 1507367, 7, 65543, 1572866, 7, 65543, 1572903, 7, 65543, 1638402, 7, 65543, 1638439, 7, 65543, 1703938, 7, 65543, 1703975, 7, 65543, 1769474, 7, 65543, 1769510, 48, 131073, 1769511, 7, 65543, 1835010, 7, 65543, 1835043, 7, 65543, 1835044, 7, 65543, 1835045, 7, 65543, 1835046, 7, 65543, 1835047, 7, 65543, 1900546, 7, 65543, 1900583, 7, 65543, 1966082, 7, 65543, 1966119, 7, 65543, 2031618, 7, 65543, 2031655, 7, 65543, 2097154, 7, 65543, 2097155, 7, 65543, 2097156, 7, 65543, 2097157, 7, 65543, 2097191, 7, 65543, 2162690, 7, 65543, 2162727, 7, 65543, 2228226, 7, 65543, 2228263, 7, 65543, 2293762, 7, 65543, 2293799, 7, 65543, 2359298, 7, 65543, 2359299, 7, 65543, 2359300, 7, 65543, 2359301, 7, 65543, 2359302, 7, 65543, 2359303, 7, 65543, 2359304, 7, 65543, 2359305, 7, 65543, 2359306, 7, 65543, 2359307, 7, 65543, 2359308, 7, 65543, 2359309, 7, 65543, 2359310, 7, 65543, 2359311, 7, 65543, 2359312, 7, 65543, 2359313, 7, 65543, 2359314, 7, 65543, 2359315, 7, 65543, 2359316, 7, 65543, 2359317, 7, 65543, 2359318, 7, 65543, 2359319, 7, 65543, 2359320, 7, 65543, 2359321, 7, 65543, 2359322, 7, 65543, 2359323, 7, 65543, 2359324, 7, 65543, 2359325, 7, 65543, 2359326, 7, 65543, 2359327, 7, 65543, 2359328, 7, 65543, 2359329, 7, 65543, 2359330, 7, 65543, 2359331, 7, 65543, 2359332, 7, 65543, 2359333, 7, 65543, 2359334, 7, 65543, 2359335, 7, 65543 )
+
+[node name="TileMap4" type="TileMap" parent="."]
+tile_set = ExtResource( 11 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 1179665, 7, 65545, 1245201, 7, 65545, 1245212, 7, 65545, 1310737, 7, 65545, 1310748, 7, 65545, 1376273, 7, 65545, 1376284, 7, 65545, 1441809, 7, 65545, 1441820, 7, 65545, 1507345, 7, 65545, 1507356, 7, 65545, 1572881, 7, 65545, 1572892, 7, 65545, 1638417, 7, 65545, 1638428, 7, 65545, 1703953, 7, 65545, 1703964, 7, 65545, 1769489, 7, 65545, 1769500, 7, 65545, 1835025, 7, 65545, 1835036, 7, 65545, 1900561, 7, 65545, 1900572, 7, 65545, 1966097, 7, 65545, 1966108, 7, 65545, 2031633, 7, 65545, 2031644, 7, 65545, 2097169, 7, 65545, 2097180, 7, 65545, 2162705, 7, 65545, 2162716, 7, 65545, 2228241, 7, 65545, 2228252, 7, 65545, 2293777, 7, 65545, 2293788, 7, 65545 )
+script = ExtResource( 1 )
+eventName = "prank"
 
 [connection signal="NextLevel" from="Player" to="." method="onLevelChangeRequest"]
 [connection signal="OnJump" from="Player" to="." method="onJump"]

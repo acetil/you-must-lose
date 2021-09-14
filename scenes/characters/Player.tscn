@@ -60,11 +60,11 @@ extents = Vector2( 7.46948, 16.6761 )
 collision_layer = 32
 collision_mask = 33
 script = ExtResource( 2 )
-relativeMovementForce = 400.0
-gravityRel = Vector2( 0, 20 )
-jumpImpulseNorm = Vector2( 0, 600 )
+relativeMovementForce = 200.0
+gravityRel = Vector2( 0, 15 )
+jumpImpulseNorm = Vector2( 0, 420 )
 coyoteTime = 0.09
-horizontalFriction = 10.0
+horizontalFriction = 8.0
 minXVel = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -74,6 +74,7 @@ shape = SubResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "idle"
+frame = 5
 playing = true
 script = ExtResource( 21 )
 
