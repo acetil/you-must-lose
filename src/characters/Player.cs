@@ -52,6 +52,8 @@ namespace youmustlose.characters {
 
         private bool grounded = false;
 
+        private bool moving = false;
+
         private int jumps = 0;
 
         private float timeSinceGrounded = 0.0f;
@@ -59,12 +61,15 @@ namespace youmustlose.characters {
         private bool movingDeathPrimed = false;
 
         private bool hasInteracted = false;
+
+        private PlayerAnim animator;
         
         // Called when the node enters the scene tree for the first time.
         public override void _Ready () {
             movementForce = relativeMovementForce * SPEED_MULT;
             gravity = gravityRel * GRAVITY_MULT;
             jumpImpulseNorm.y *= -1;
+            animator = GetNode<PlayerAnim>("AnimatedSprite");
         }
 
         private Vector2 handleInput (float delta) {
@@ -86,6 +91,7 @@ namespace youmustlose.characters {
                     jumped = true;
                     grounded = false;
                     EmitSignal(nameof(OnJump), jumps != 1);
+                    animator.onJump();
                 }
             } else {
                 jumped = false;
@@ -114,17 +120,32 @@ namespace youmustlose.characters {
             if (velocity.x > 0 != sign || Math.Abs(velocity.x) < minXVel) {
                 velocity.x = 0;
             }
+
+            if (velocity.x == 0 && moving) {
+                moving = false;
+                animator.onStopMove();
+            } else if (velocity.x != 0) {
+                if (!moving) {
+                    moving = true;
+                    animator.onStartMove();
+                }
+                animator.onFacing(velocity.x < 0);
+            }
             
             velocity = MoveAndSlide(velocity, Vector2.Up);
             if (checkOnFloor()) {
                 jumps = 0;
                 timeSinceGrounded = 0.0f;
+                if (!grounded) {
+                    animator.onLand();
+                }
                 grounded = true;
             } else {
                 timeSinceGrounded += delta;
                 if (timeSinceGrounded > coyoteTime && jumps == 0) {
                     jumps = 1;
                     grounded = false;
+                    animator.onNotGrounded();
                 }
             }
         }
