@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://assets/audio/voice/parrotlv10start1.mp3" type="AudioStream" id=11]
 [ext_resource path="res://assets/audio/voice/devlv10start2.mp3" type="AudioStream" id=12]
 [ext_resource path="res://scenes/audio/Level10Audio.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/audio/voice/parrotlv10devoff.mp3" type="AudioStream" id=14]
+[ext_resource path="res://assets/audio/voice/parrotlv10off.mp3" type="AudioStream" id=15]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -292,6 +294,7 @@ position = Vector2( 358.445, 427.161 )
 scale = Vector2( 0.599999, 0.599999 )
 onEvent = "kill_parrot"
 offEvent = "a"
+gate = "kill_dev"
 
 [node name="Switch2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 467.693, 427.005 )
@@ -318,6 +321,10 @@ tile_data = PoolIntArray( 1245198, 7, 65536, 1245199, 7, 65536, 1245200, 7, 6553
 
 [node name="LevelAudio" parent="." instance=ExtResource( 13 )]
 startLines = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ) ]
+killDevEvent = "kill_dev"
+killDevLine = ExtResource( 14 )
+killParrotEvent = "kill_parrot"
+killParrotLine = ExtResource( 15 )
 
 [connection signal="NextLevel" from="Player" to="." method="onLevelChangeRequest"]
 [connection signal="OnInteract" from="Player" to="." method="onInteraction"]

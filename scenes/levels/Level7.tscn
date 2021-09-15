@@ -297,7 +297,6 @@ tile_data = PoolIntArray( 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0
 
 [node name="Goal" parent="." instance=ExtResource( 1 )]
 position = Vector2( 519.677, 491.228 )
-scale = Vector2( 1.64, 1.64 )
 
 [node name="Level Logic" type="Area2D" parent="." groups=[
 "enemies",

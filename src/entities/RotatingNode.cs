@@ -11,10 +11,12 @@ namespace youmustlose.entities {
 		[Export] public string rotateEvent;
 
 		[Export] public float angularVelocity;
-
+		[Export] public string firstRotateEvent;
 		private float targetRotation = 0;
 
 		private bool isRotating = false;
+
+		private bool firstRotation = true;
 
 		private List<ILevelEventListener> listeners = new List<ILevelEventListener>();
 
@@ -63,6 +65,10 @@ namespace youmustlose.entities {
 				}
 
 				isRotating = true;
+				if (firstRotation) {
+					raiseLevelEvent(firstRotateEvent);
+					firstRotation = false;
+				}
 			} else {
 				foreach (var n in listeners) {
 					n.onLevelEvent(eventName);
