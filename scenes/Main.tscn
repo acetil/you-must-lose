@@ -9,3 +9,5 @@ script = ExtResource( 2 )
 firstLevel = ExtResource( 1 )
 
 [node name="GUI" parent="." instance=ExtResource( 3 )]
+
+[connection signal="StartGame" from="GUI" to="." method="startGame"]

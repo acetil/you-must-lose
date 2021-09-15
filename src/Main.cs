@@ -4,6 +4,7 @@ using Godot;
 namespace youmustlose {
 	public class Main : Node2D {
 		[Export] public PackedScene firstLevel;
+		[Export] public bool debug = false;
 
 		private PackedScene currentScene;
 
@@ -14,7 +15,10 @@ namespace youmustlose {
 
 		public override void _Ready () {
 			gui = GetNode<GUI>("GUI");
-			changeLevel(firstLevel);
+			if (debug) {
+				gui.onStartGame();
+			}
+			//changeLevel(firstLevel);
 		}
 
 
@@ -26,6 +30,10 @@ namespace youmustlose {
 			changeLevel(nextLevel);
 		}
 
+		public void startGame () {
+			changeLevel(firstLevel);
+		}
+		
 		private void changeLevel (PackedScene levelScene) {
 			currentLevel?.QueueFree();
 			
