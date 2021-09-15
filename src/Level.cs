@@ -42,6 +42,10 @@ namespace youmustlose {
 				if (n is LevelEventSignaller node) {
 					node.Connect(nameof(LevelEventSignaller.LevelEvent), this, nameof(onLevelEvent));
 				}
+
+				if (n is Node node1 && n is ILevelEventSignaller) {
+					node1.Connect(nameof(LevelEventSignaller.LevelEvent), this, nameof(onLevelEvent));
+				}
 			}
 
 			levelSound = GetNode<LevelSound>("LevelAudio");

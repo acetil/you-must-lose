@@ -32,7 +32,7 @@ namespace youmustlose.level_logic.audio {
 		public abstract void onSuccess ();
 		public abstract void onDie ();
 
-		public void onLevelEvent (string eventName) {
+		public virtual void onLevelEvent (string eventName) {
 			
 		}
 
