@@ -6,9 +6,13 @@ namespace youmustlose.level_logic.audio {
 		[Export] public AudioStream[] startLines;
 		[Export] public AudioStream successStream;
 		[Export] public AudioStream[] dieLines;
+		[Export] public string solveEvent;
+		[Export] public AudioStream[] solveLines;
 		public override async void onLevelStart () {
-			foreach (var i in startLines) {
-				await playSound(i);
+			if (reloadNum == 0) {
+				foreach (var i in startLines) {
+					await playSound(i);
+				}
 			}
 		}
 
@@ -24,6 +28,14 @@ namespace youmustlose.level_logic.audio {
 				await playSound(i);
 			}
 			nextLevel();
+		}
+
+		public override async void onLevelEvent (string eventName) {
+			if (eventName == solveEvent) {
+				foreach (var i in solveLines) {
+					await playSound(i);
+				}
+			}
 		}
 	}
 }

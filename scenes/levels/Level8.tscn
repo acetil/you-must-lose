@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://src/entities/AreaEnterExit.cs" type="Script" id=1]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=2]
@@ -19,6 +19,11 @@
 [ext_resource path="res://assets/audio/voice/parrotlv8start1.mp3" type="AudioStream" id=17]
 [ext_resource path="res://assets/audio/voice/devlv8start4.mp3" type="AudioStream" id=18]
 [ext_resource path="res://assets/audio/voice/devlv8die2.mp3" type="AudioStream" id=19]
+[ext_resource path="res://assets/audio/voice/devlv8solve2.mp3" type="AudioStream" id=20]
+[ext_resource path="res://assets/audio/voice/parrotlv8solve3.mp3" type="AudioStream" id=21]
+[ext_resource path="res://assets/audio/voice/parrotlv8solve1.mp3" type="AudioStream" id=22]
+[ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/entities/AppearingGoal.cs" type="Script" id=24]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -395,6 +400,7 @@ offEvent = "off_B"
 
 [node name="Level Logic" type="Node" parent="."]
 script = ExtResource( 5 )
+solveEvent = "solve_event"
 
 [node name="Area A" type="Area2D" parent="."]
 position = Vector2( 261.455, 276.438 )
@@ -429,6 +435,13 @@ tile_data = PoolIntArray( 327682, 7, 65536, 327683, 7, 65536, 327684, 7, 65536, 
 startLines = [ ExtResource( 17 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 18 ) ]
 successStream = ExtResource( 13 )
 dieLines = [ ExtResource( 11 ), ExtResource( 19 ), ExtResource( 15 ) ]
+solveEvent = "solve_event"
+solveLines = [ ExtResource( 22 ), ExtResource( 20 ), ExtResource( 21 ) ]
+
+[node name="Goal" parent="." instance=ExtResource( 23 )]
+position = Vector2( 75.5952, 558.145 )
+script = ExtResource( 24 )
+showEvent = "solve_event"
 
 [connection signal="NextLevel" from="Player" to="." method="onLevelChangeRequest"]
 [connection signal="OnInteract" from="Player" to="." method="onInteraction"]

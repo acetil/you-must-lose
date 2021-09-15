@@ -5,6 +5,8 @@ namespace youmustlose.level_logic {
 	// Some of the worst code I've ever written
 	public class Level8Logic : LevelEventSignaller, ILevelEventListener {
 
+		[Export] public string solveEvent;
+
 		private delegate bool EvaluateState (LevelState state);
 
 		private readonly EvaluateState door1Func = state => state.areaA && !state.switchA;
@@ -16,6 +18,8 @@ namespace youmustlose.level_logic {
 		private readonly DoorState doorState = new DoorState();
 
 		private readonly LevelState levelState = new LevelState();
+
+		private bool solved = false;
 		
 		public void onLevelEvent (string eventName) {
 			var updated = false;
@@ -80,6 +84,11 @@ namespace youmustlose.level_logic {
 			}
 			if (doorState.door4 != oldState.door4) {
 				raiseLevelEvent(doorState.door4 ? "close_4" : "open_4");
+			}
+
+			if (!solved && levelState.areaA && levelState.switchA && levelState.switchB) {
+				raiseLevelEvent(solveEvent);
+				solved = true;
 			}
 		}
 
