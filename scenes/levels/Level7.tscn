@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,16 @@
 [ext_resource path="res://src/level_logic/Level7Logic.cs" type="Script" id=5]
 [ext_resource path="res://scenes/levels/Level8.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/levels/leveltiles.tres" type="TileSet" id=7]
+[ext_resource path="res://assets/audio/voice/devlv7start3.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/voice/parrotlv7start8.mp3" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/voice/devlv7start1.mp3" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/voice/devlv7start9.mp3" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/voice/devlv7start7.mp3" type="AudioStream" id=12]
+[ext_resource path="res://assets/audio/voice/parrotlv7start6.mp3" type="AudioStream" id=13]
+[ext_resource path="res://scenes/audio/Level7Audio.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/audio/voice/parrotlv7start2.mp3" type="AudioStream" id=15]
+[ext_resource path="res://assets/audio/voice/devlv7start5.mp3" type="AudioStream" id=16]
+[ext_resource path="res://assets/audio/voice/parrotlv7start4.mp3" type="AudioStream" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -281,7 +291,7 @@ position = Vector2( 436.439, 347.248 )
 collision_layer = 4
 collision_mask = 4
 script = ExtResource( 5 )
-timeout = 30.0
+timeout = 90.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Logic" groups=[
 "enemies",
@@ -294,6 +304,9 @@ tile_set = ExtResource( 7 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 1441803, 7, 65544, 1441804, 7, 65544, 1441805, 7, 65544, 1441806, 7, 65544, 1441807, 7, 65544, 1441808, 7, 65544, 1441809, 7, 65544, 1441810, 7, 65544, 1441811, 7, 65544, 1441812, 7, 65544, 1441813, 7, 65544, 1441814, 7, 65544, 1441815, 7, 65544, 1441816, 7, 65544, 1441817, 7, 65544, 1441818, 7, 65544, 1441819, 7, 65544, 1441820, 7, 65544, 1441821, 7, 65544, 1441822, 7, 65544, 1441823, 7, 65544, 1441824, 7, 65544, 1441825, 7, 65544, 1441826, 7, 65544, 1507339, 7, 65544, 1507362, 7, 65544, 1572875, 7, 65544, 1572898, 7, 65544, 1638411, 7, 65544, 1638434, 7, 65544, 1703947, 7, 65544, 1703970, 7, 65544, 1769483, 7, 65544, 1769506, 7, 65544, 1835019, 7, 65544, 1835042, 7, 65544, 1900555, 7, 65544, 1900578, 7, 65544, 1966091, 7, 65544, 1966114, 7, 65544, 2031627, 7, 65544, 2031650, 7, 65544, 2097163, 7, 65544, 2097164, 7, 65544, 2097165, 7, 65544, 2097166, 7, 65544, 2097167, 7, 65544, 2097168, 7, 65544, 2097169, 7, 65544, 2097170, 7, 65544, 2097171, 7, 65544, 2097172, 7, 65544, 2097173, 7, 65544, 2097174, 7, 65544, 2097175, 7, 65544, 2097176, 7, 65544, 2097177, 7, 65544, 2097178, 7, 65544, 2097179, 7, 65544, 2097180, 7, 65544, 2097181, 7, 65544, 2097182, 7, 65544, 2097183, 7, 65544, 2097184, 7, 65544, 2097185, 7, 65544, 2097186, 7, 65544 )
+
+[node name="LevelAudio" parent="." instance=ExtResource( 14 )]
+startLines = [ ExtResource( 10 ), ExtResource( 15 ), ExtResource( 8 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 9 ), ExtResource( 11 ) ]
 
 [connection signal="NextLevel" from="Player" to="." method="onLevelChangeRequest"]
 [connection signal="OnJump" from="Player" to="." method="onJump"]

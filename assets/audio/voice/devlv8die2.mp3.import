@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/devlv8die2.mp3-711447b25196314ab4be6ac4ce0acb4a.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/voice/devlv8die2.mp3"
+dest_files=[ "res://.import/devlv8die2.mp3-711447b25196314ab4be6ac4ce0acb4a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -22,8 +22,8 @@ namespace youmustlose {
 		}
 
 
-		public void onReloadLevel () {
-			changeLevel(currentScene);
+		public void onReloadLevel (int reloadNum) {
+			changeLevel(currentScene, reloadNum);
 		}
 
 		public void onChangeLevel (PackedScene nextLevel) {
@@ -34,13 +34,15 @@ namespace youmustlose {
 			changeLevel(firstLevel);
 		}
 		
-		private void changeLevel (PackedScene levelScene) {
+		private void changeLevel (PackedScene levelScene, int reloadNum = 0) {
+			GetTree().Paused = false;
 			currentLevel?.QueueFree();
 			
 			var node = levelScene.Instance();
 
 			if (node is Level level) {
 				currentLevel = level;
+				level.reloadNum = reloadNum;
 				CallDeferred("add_child", node);
 				//AddChild(node);
 				setupSignals();

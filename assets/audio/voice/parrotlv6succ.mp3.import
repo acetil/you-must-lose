@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/parrotlv6succ.mp3-80851feaaa3e555520aa349196de76c5.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/voice/parrotlv6succ.mp3"
+dest_files=[ "res://.import/parrotlv6succ.mp3-80851feaaa3e555520aa349196de76c5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

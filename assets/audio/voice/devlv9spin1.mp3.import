@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/devlv9spin1.mp3-69c83f1e1cad0cfa3b87ebfa140d9057.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/voice/devlv9spin1.mp3"
+dest_files=[ "res://.import/devlv9spin1.mp3-69c83f1e1cad0cfa3b87ebfa140d9057.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

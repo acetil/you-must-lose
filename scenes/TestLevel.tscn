@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Level.cs" type="Script" id=1]
+[ext_resource path="res://scenes/audio/NoLevelAudio.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Theme" id=1]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -10,7 +13,10 @@ margin_left = 381.764
 margin_top = 284.321
 margin_right = 492.764
 margin_bottom = 298.321
-text = "Thanks for playin!"
+theme = SubResource( 1 )
+text = "Thanks for playing!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LevelAudio" parent="." instance=ExtResource( 2 )]

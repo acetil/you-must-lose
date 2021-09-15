@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://src/entities/PrankShowTile.cs" type="Script" id=1]
 [ext_resource path="res://scenes/characters/Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://src/level_logic/Level6Logic.cs" type="Script" id=9]
 [ext_resource path="res://scenes/levels/Level7.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/levels/leveltiles.tres" type="TileSet" id=11]
+[ext_resource path="res://assets/audio/voice/parrotlv6succ.mp3" type="AudioStream" id=12]
+[ext_resource path="res://scenes/audio/SimpleLevelAudio.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/audio/voice/parrotlv6die.mp3" type="AudioStream" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 128, 128, 0, 128, 0, 0, 128, 0 )
@@ -361,6 +364,10 @@ format = 1
 tile_data = PoolIntArray( 1179665, 7, 65545, 1245201, 7, 65545, 1245212, 7, 65545, 1310737, 7, 65545, 1310748, 7, 65545, 1376273, 7, 65545, 1376284, 7, 65545, 1441809, 7, 65545, 1441820, 7, 65545, 1507345, 7, 65545, 1507356, 7, 65545, 1572881, 7, 65545, 1572892, 7, 65545, 1638417, 7, 65545, 1638428, 7, 65545, 1703953, 7, 65545, 1703964, 7, 65545, 1769489, 7, 65545, 1769500, 7, 65545, 1835025, 7, 65545, 1835036, 7, 65545, 1900561, 7, 65545, 1900572, 7, 65545, 1966097, 7, 65545, 1966108, 7, 65545, 2031633, 7, 65545, 2031644, 7, 65545, 2097169, 7, 65545, 2097180, 7, 65545, 2162705, 7, 65545, 2162716, 7, 65545, 2228241, 7, 65545, 2228252, 7, 65545, 2293777, 7, 65545, 2293788, 7, 65545 )
 script = ExtResource( 1 )
 eventName = "prank"
+
+[node name="LevelAudio" parent="." instance=ExtResource( 13 )]
+firstSuccess = ExtResource( 12 )
+dieStream = ExtResource( 14 )
 
 [connection signal="NextLevel" from="Player" to="." method="onLevelChangeRequest"]
 [connection signal="OnJump" from="Player" to="." method="onJump"]
