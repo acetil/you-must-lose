@@ -33,7 +33,7 @@ script = ExtResource( 7 )
 "goals",
 ]]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=[
 "goals",
@@ -47,4 +47,5 @@ animation = "animated"
 frame = 4
 playing = true
 
+[connection signal="area_entered" from="Area2D" to="." method="onAreaEntered"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="onComplete"]

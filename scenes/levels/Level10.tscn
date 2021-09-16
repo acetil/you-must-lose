@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/entities/Switch.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/level_logic/Level10Logic.cs" type="Script" id=7]
-[ext_resource path="res://scenes/levels/Level11.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/levels/Level 11.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/levels/leveltiles.tres" type="TileSet" id=9]
 [ext_resource path="res://assets/audio/voice/parrotlv10start3.mp3" type="AudioStream" id=10]
 [ext_resource path="res://assets/audio/voice/parrotlv10start1.mp3" type="AudioStream" id=11]

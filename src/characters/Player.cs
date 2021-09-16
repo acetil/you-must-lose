@@ -26,6 +26,7 @@ namespace youmustlose.characters {
         [Export] public float floorTolerance = 0.0f;
 
         [Export] public bool reversed = false;
+        [Export] public float reversedNextTime = 1.0f;
 
         [Signal]
         public delegate void ReloadLevel ();
@@ -150,7 +151,7 @@ namespace youmustlose.characters {
             }
         }
 
-        public void onAreaEntered(Area2D other) {
+        public async void onAreaEntered(Area2D other) {
             Console.WriteLine("Collision detected!");
 
             if (other.IsInGroup("goals")) {
@@ -158,6 +159,7 @@ namespace youmustlose.characters {
                 if (!reversed) {
                     EmitSignal(nameof(ReloadLevel));
                 } else {
+                    await ToSignal(GetTree().CreateTimer(reversedNextTime), "timeout");
                     EmitSignal(nameof(NextLevel));
                 }
             } else if (other.IsInGroup("enemies")) {
