@@ -61,6 +61,12 @@ namespace youmustlose {
 			}
 		}
 
+		public override void _Process (float delta) {
+			if (Input.IsActionPressed("level_reload")) {
+				onReload(reloadNum);
+			}
+		}
+
 		public void onReloadRequest () {
 			levelSound.onSuccess();
 		}
