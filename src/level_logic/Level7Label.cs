@@ -26,6 +26,7 @@ namespace youmustlose.level_logic {
 		private float temp;
 		private float gpu;
 		private float ram;
+		private int errors = 0;
 
 		private Random random = new Random();
 
@@ -41,6 +42,11 @@ namespace youmustlose.level_logic {
 			t1.Connect("timeout", this, nameof(startTextUpdates));
 			t2.Connect("timeout", this, nameof(startRamUpdates));
 			updateStats();
+		}
+
+		public override void _Process (float delta) {
+			errors += (int)Math.Floor(random.NextDouble() * 1000);
+			Text = $"CPU:       {cpu:g3}% \nRAM:       {ram}% \nCore Temp: {temp}C \nGPU:       {gpu}%\nErrors:    {errors}";
 		}
 
 		private async void startTextUpdates () {
@@ -63,7 +69,8 @@ namespace youmustlose.level_logic {
 			cpu = updateStat((int)Math.Round(random.NextDouble()) * maxUpdates, cpu, cpuMin, cpuMax, cpuMean, cpuRes);
 			temp = updateStat((int)Math.Round(random.NextDouble()) * maxUpdates, temp, tempMin, tempMax, tempMean, tempRes);
 			gpu = updateStat((int)Math.Round(random.NextDouble()) * maxUpdates, gpu, gpuMin, gpuMax, gpuMean, gpuRes);
-			Text = $"CPU:       {cpu:g3}% \nRAM:       {ram}% \nCore Temp: {temp}C \nGPU:       {gpu}%";
+			errors += (int)Math.Floor(random.NextDouble() * 1000);
+			Text = $"CPU:       {cpu:g3}% \nRAM:       {ram}% \nCore Temp: {temp}C \nGPU:       {gpu}%\nErrors:    {errors}";
 		}
 
 		private float updateStat (int updates, float curr, float min, float max, float mean, float res) {
