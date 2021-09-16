@@ -14,7 +14,7 @@ margin_top = 284.321
 margin_right = 492.764
 margin_bottom = 298.321
 theme = SubResource( 1 )
-text = "Thanks for playing!"
+text = "You Win! Thanks for playing :)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
