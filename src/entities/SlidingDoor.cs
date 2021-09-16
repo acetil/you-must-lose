@@ -54,7 +54,7 @@ namespace youmustlose.entities {
 				var coll = MoveAndCollide(disp * delta);
 
 				if ((Position - target).LengthSquared() < 0.0001) {
-					Motion__syncToPhysics = true;
+					//Motion__syncToPhysics = true;
 					moving = false;
 				}
 			}
