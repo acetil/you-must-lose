@@ -41,5 +41,6 @@ animations = [ {
 } ]
 
 [node name="Key" type="AnimatedSprite"]
+z_index = -2
 frames = SubResource( 1 )
 animation = "enter_key"

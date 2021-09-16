@@ -68,7 +68,6 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "idle"
-frame = 4
 playing = true
 script = ExtResource( 21 )
 

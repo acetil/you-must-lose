@@ -92,6 +92,9 @@ ma9ici4n - bird (which I ruined)
 
 ur mum"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="Title/StartButton" to="." method="onStart"]
 [connection signal="pressed" from="Title/CreditsButton" to="." method="onCredits"]
