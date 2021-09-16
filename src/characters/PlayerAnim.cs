@@ -15,15 +15,15 @@ namespace youmustlose.characters {
 		public void onStartMove () {
 			if (grounded) {
 				Play(runningAnim);
-				moving = true;
 			}
+			moving = true;
 		}
 
 		public void onStopMove () {
 			if (grounded) {
 				Play(idleAnim);
-				moving = false;
 			}
+			moving = false;
 		}
 
 		public void onJump () {
