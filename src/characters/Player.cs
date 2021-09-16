@@ -85,7 +85,6 @@ namespace youmustlose.characters {
 
             if (Input.IsActionPressed("movement_jump")) {
                 if (jumps < maxJumps && !jumped) {
-                    Console.WriteLine("Jumped!");
                     deltaVel.y -= velocity.y;
                     deltaVel += jumpImpulseNorm;
                     jumps++;
@@ -152,10 +151,8 @@ namespace youmustlose.characters {
         }
 
         public async void onAreaEntered(Area2D other) {
-            Console.WriteLine("Collision detected!");
 
             if (other.IsInGroup("goals")) {
-                Console.WriteLine("Collision detected with goal!");
                 if (!reversed) {
                     EmitSignal(nameof(ReloadLevel));
                 } else {
@@ -163,25 +160,21 @@ namespace youmustlose.characters {
                     EmitSignal(nameof(NextLevel));
                 }
             } else if (other.IsInGroup("enemies")) {
-                Console.WriteLine("Collision detected with enemy!");
                 die();
             } else if (other.IsInGroup("death")) {
                 die();
             } else if (other.IsInGroup("prime_moving")) {
-                Console.WriteLine("Moving death primed!");
                 movingDeathPrimed = true;
             }
         }
 
         public void onAreaExited (Area2D other) {
             if (other.IsInGroup("prime_moving")) {
-                Console.WriteLine("Moving death unprimed!");
                 movingDeathPrimed = false;
             }
         }
 
         public void onBodyEntered (Node other) {
-            Console.WriteLine("Detected body collision!");
             if (other.IsInGroup("moving") && movingDeathPrimed) {
                 die();
             }
@@ -195,9 +188,7 @@ namespace youmustlose.characters {
                 if (Math.Abs(angle) <= floorTolerance) {
                     return true;
                 }
-                Console.WriteLine("Upvec: " + upVec + ", normal: " + coll.Normal + ", angle to: " + angle);
             }
-            Console.WriteLine("No floor collision!");
             return false;
         }
 

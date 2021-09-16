@@ -56,9 +56,7 @@ namespace youmustlose.entities {
 		}
 
 		public void onLevelEvent (string eventName) {
-			Console.WriteLine("Received event: " + eventName);
 			if (eventName == "prank" && !isRotating) {
-				Console.WriteLine("Starting rotation!");
 				targetRotation += 0.25f;
 				if (targetRotation >= 1.0f) {
 					targetRotation -= 1.0f;

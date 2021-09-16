@@ -11,7 +11,6 @@ namespace youmustlose {
 		}
 
 		public void setLevelText (string text) {
-			Console.WriteLine("Setting level text: " + text);
 			levelLabel.Text = text;
 		}
 

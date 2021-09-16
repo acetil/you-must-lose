@@ -18,7 +18,6 @@ namespace youmustlose.entities {
 		}
 
 		private void onTimer () {
-			Console.WriteLine("Doing timer!");
 			animations.Stop();
 			animations.Play(animName);
 			animations.Frame = 0;

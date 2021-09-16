@@ -11,13 +11,11 @@ namespace youmustlose.entities {
 				if (isIn && engagedVal && !value) {
 					SetCollisionLayerBit(2, true);
 					AddToGroup("prime_moving");
-					Console.WriteLine("Entered body!");
 				} else if (isIn && !engagedVal && value) {
 					SetCollisionLayerBit(2, false);
 					if (IsInGroup("prime_moving")) {
 						RemoveFromGroup("prime_moving");
 					}
-					Console.WriteLine("Exited body!");
 				}
 				engagedVal = value;
 			}
@@ -28,7 +26,6 @@ namespace youmustlose.entities {
 			if (engaged) {
 				SetCollisionLayerBit(2, true);
 				AddToGroup("prime_moving");
-				Console.WriteLine("Entered body!");
 			}
 		}
 
@@ -39,8 +36,7 @@ namespace youmustlose.entities {
 				if (IsInGroup("prime_moving")) {
 					RemoveFromGroup("prime_moving");
 				}
-
-				Console.WriteLine("Exited body!");
+				
 			}
 		}
 		

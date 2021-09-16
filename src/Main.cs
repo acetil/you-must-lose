@@ -63,7 +63,6 @@ namespace youmustlose {
 		}
 
 		private void pause () {
-			Console.WriteLine("Pausing!");
 			GetTree().Paused = true;
 			pauseSprite.Show();
 		}

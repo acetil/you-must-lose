@@ -29,7 +29,6 @@ namespace youmustlose.entities {
 		}
 
 		public void onLevelEvent (string eventName) {
-			Console.WriteLine("Passing through event!");
 			foreach (var n in listeners) {
 				n.onLevelEvent(eventName);
 			}

@@ -88,7 +88,6 @@ namespace youmustlose {
 		}
 
 		public void onLevelEvent (string eventName) {
-			Console.WriteLine("Raised event: " + eventName);
 			foreach (var node in listeners) {
 				node.onLevelEvent(eventName);
 			}
