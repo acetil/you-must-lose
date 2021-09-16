@@ -17,6 +17,7 @@ position = Vector2( 8, -192 )
 script = ExtResource( 1 )
 nextLevel = ExtResource( 6 )
 levelName = "Level 1"
+special = true
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 392, 556.863 )

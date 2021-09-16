@@ -11,6 +11,7 @@ namespace youmustlose {
 
 		[Export] public PackedScene nextLevel;
 		[Export] public string levelName;
+		[Export] public bool special;
 		
 		[Signal] 
 		public delegate void ChangeLevel (PackedScene scene);
@@ -76,7 +77,11 @@ namespace youmustlose {
 		}
 
 		public void onLevelChangeRequest () {
-			levelSound.onDie();
+			if (special && reloadNum == 0) {
+				EmitSignal(nameof(ReloadLevel), reloadNum);
+			} else {
+				levelSound.onDie();
+			}
 		}
 
 		public void onLevelChange () {
