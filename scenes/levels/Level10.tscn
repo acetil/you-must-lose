@@ -268,6 +268,7 @@ levelName = "Ring Level 0"
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 585.605, 449.044 )
 scale = Vector2( 1.35479, 1.35728 )
+z_index = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
@@ -294,13 +295,18 @@ position = Vector2( 322.849, 202.765 )
 position = Vector2( 358.445, 427.161 )
 scale = Vector2( 0.599999, 0.599999 )
 onEvent = "kill_parrot"
-offEvent = "a"
+offEvent = "kill_parrot"
+state = true
 gate = "kill_dev"
+oneTime = true
 
 [node name="Switch2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 467.693, 427.005 )
 scale = Vector2( 0.599999, 0.599999 )
 onEvent = "kill_dev"
+offEvent = "kill_dev"
+state = true
+oneTime = true
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 428.507, 295.571 )
