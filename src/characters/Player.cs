@@ -200,6 +200,7 @@ namespace youmustlose.characters {
         }
 
         private void die () {
+            Hide();
             if (!reversed) {
                 EmitSignal(nameof(NextLevel));
             } else {

@@ -18,6 +18,9 @@ namespace youmustlose {
 		[Signal]
 		public delegate void ReloadLevel (int reloadNum);
 
+		[Signal]
+		public delegate void Pause ();
+
 		public int reloadNum;
 
 		private List<ILevelEventListener> listeners = new List<ILevelEventListener>();
@@ -75,8 +78,7 @@ namespace youmustlose {
 		}
 
 		public void onPause () {
-			Console.WriteLine("Pausing!");
-			GetTree().Paused = true;
+			EmitSignal(nameof(Pause));
 		}
 
 		public void onLevelEvent (string eventName) {

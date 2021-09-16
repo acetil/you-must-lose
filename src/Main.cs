@@ -12,9 +12,11 @@ namespace youmustlose {
 
 		private GUI gui;
 
-
+		private AnimatedSprite pauseSprite;
 		public override void _Ready () {
 			gui = GetNode<GUI>("GUI");
+			pauseSprite = GetNode<AnimatedSprite>("PauseTex");
+			pauseSprite.Hide();
 			if (debug) {
 				gui.onStartGame();
 			}
@@ -35,6 +37,7 @@ namespace youmustlose {
 		}
 		
 		private void changeLevel (PackedScene levelScene, int reloadNum = 0) {
+			pauseSprite.Hide();
 			GetTree().Paused = false;
 			currentLevel?.QueueFree();
 			
@@ -56,6 +59,13 @@ namespace youmustlose {
 		private void setupSignals () {
 			currentLevel.Connect("ChangeLevel", this, nameof(onChangeLevel));
 			currentLevel.Connect("ReloadLevel", this, nameof(onReloadLevel));
+			currentLevel.Connect("Pause", this, nameof(pause));
+		}
+
+		private void pause () {
+			Console.WriteLine("Pausing!");
+			GetTree().Paused = true;
+			pauseSprite.Show();
 		}
 	}
 }
