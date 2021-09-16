@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/blockRed.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/Switch.cs" type="Script" id=2]
 [ext_resource path="res://assets/textures/zero.png" type="Texture" id=3]
 [ext_resource path="res://assets/textures/one.png" type="Texture" id=4]
@@ -14,11 +13,6 @@ extents = Vector2( 31.8611, 31.918 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "on",
@@ -27,6 +21,11 @@ animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "off",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "gated_on",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
@@ -42,11 +41,6 @@ animations = [ {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "highlight_on",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "gated_on",
 "speed": 5.0
 } ]
 

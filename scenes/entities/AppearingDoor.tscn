@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/tileBrown_08.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/objects/sliding.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/SlidingDoor.cs" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -25,4 +25,6 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.471938, 0.235969 )
+scale = Vector2( 1.97337, 1.57517 )
 frames = SubResource( 2 )

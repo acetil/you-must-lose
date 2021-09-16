@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/yellowJewel.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/objects/diamond-05.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/objects/diamond-01.png" type="Texture" id=3]
 [ext_resource path="res://assets/textures/objects/diamond-02.png" type="Texture" id=4]
@@ -13,11 +12,6 @@ radius = 4.62825
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 2 ) ],
 "loop": false,
 "name": "animated",
