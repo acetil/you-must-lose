@@ -14,7 +14,7 @@ namespace youmustlose {
 
 		private AnimatedSprite pauseSprite;
 		public override void _Ready () {
-			gui = GetNode<GUI>("GUI");
+			gui = GetNode<GUI>("CanvasLayer/GUI");
 			pauseSprite = GetNode<AnimatedSprite>("PauseTex");
 			pauseSprite.Hide();
 			if (debug) {
